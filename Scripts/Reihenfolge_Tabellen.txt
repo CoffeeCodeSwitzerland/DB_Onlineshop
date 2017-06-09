@@ -1,0 +1,10 @@
+1)	Kategorie
+2)	Unterkategorie
+3)	Artikel
+4)	Preis
+5)	Bild
+6)	Galerie
+7)	Kundengruppe
+8)	Kunde
+9)	Bewertung
+10)	Bestellungen

@@ -1,0 +1,50 @@
+Tabellenscripts erstelllen
+--------------------------
+Kategorie		:Tobias
+Unterkategorie		:Tobias
+Preis			:Tim
+Bewertung		:Tim
+Artikel			:Frithjof
+Gallerie		:Frithjof
+Kundengruppe		:Philippe
+Kunde			:Philippe
+Bestellungen		:Javier
+Bild			:Javier
+
+
+Tabellen Inserts
+--------------------------
+Unterkategorie, Kategorie:Tobias
+>>>>>>>>>>>>>>>>>>>>>>>>>
+Audio
+-Heimkino
+-Radio
+Drucker+Scanner
+-3D
+-Scanner
+Gaming+Gadgets
+-Game
+-Spielkonsole
+Netzwerk
+-Druckserver
+-Modem
+-Firewall
+Software
+-Betriebssysteme
+-Büroanwendungen
+-Sicherheit
+
+
+Kundengruppe, Kunde		 : Philippe
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+Privatkunde,geschäftskunde,Retailer,Student,Senior
+
+Bild,Preis				 : Tim 
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+3 Bilder pro Artikel
+
+Bewertung, Kunde,Atikel  :Frithjof 
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+-20 Bewertungen insgesamt
+-20 Artikel
+

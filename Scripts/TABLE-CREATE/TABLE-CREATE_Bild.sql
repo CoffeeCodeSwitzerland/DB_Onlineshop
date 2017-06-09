@@ -1,0 +1,7 @@
+USE [INF2D_Alpha1_Shop]
+
+CREATE TABLE Bild(
+	BildID int IDENTITY(1,1) NOT NULL,
+	Pfad nvarchar(100) NOT NULL,
+	CONSTRAINT PK_BildID PRIMARY KEY (BildID),
+	)
