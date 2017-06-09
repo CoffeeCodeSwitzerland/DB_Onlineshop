@@ -24,11 +24,11 @@ for a client. It's like a contest, because two groups have the same database pro
 **- VII:**  Each order has a state (ordered, in process, delivered).    
             `TABLES: *Bestellung, Artikel, Kunde*`         
 **- VIII:** The shop owner can query the sales sorted and ordered by:
-            + *MAX (Category, Subcategory, Article)*    
-            + *MIN (Category, Subcategory, Article)*    
-            + *AVG (Category, Subcategory, Article)*    
-            + *Categories (Subcategory, Article)*    
-            + *Clientgroup (Category, Subcategory, Article)*    
+                        + *MAX (Category, Subcategory, Article)*    
+                        + *MIN (Category, Subcategory, Article)*    
+                        + *AVG (Category, Subcategory, Article)*    
+                        + *Categories (Subcategory, Article)*    
+                        + *Clientgroup (Category, Subcategory, Article)*    
             `TABLES: *Bestellung, Artikel, Kunde*`        
 
 ## Releases
