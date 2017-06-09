@@ -8,7 +8,7 @@ This database is a project at school where we're learning to create a database
 for a client. It's like a contest, because two groups have the same database project.
 
 ## Developer Team
-- Tim d'Amato (**VI**) {unknown}
+- Tim d'Amato (**VI**) {unknown e-mail address}
 - Tobias Rüedi (**IV**) rueedi.tobias@gmail.com
 - [Frithjof Hoppe](https://github.com/frithjofhoppe) (**INSERT PRICES INTO Bestellung; VII**) frithjof.hoppe@icloud.com
 - [Javier Martinez Alvarez](https://github.com/javi36) (**V**) jmartinezalvarez0@gmail.com
