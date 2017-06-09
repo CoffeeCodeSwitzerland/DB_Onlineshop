@@ -29,7 +29,7 @@ for a client. It's like a contest, because two groups have the same database pro
    * *AVG (Category, Subcategory, Article)*    
    * *Categories (Subcategory, Article)*    
    * *Clientgroup (Category, Subcategory, Article)*    
-            `TABLES: *Bestellung, Artikel, Kunde*`        
+            `TABLES: Bestellung, Artikel, Kunde`        
 
 ## Releases
 12.06.2017			V0.1	Delivery at school (full ERD and ERM)    
