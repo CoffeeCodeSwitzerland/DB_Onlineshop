@@ -16,13 +16,13 @@ for a client. It's like a contest, because two groups have the same database pro
 
 ## SELECT | INSERT | UPDATE
 - **IV:**   Previous purchases should be viewable (needed for warranty).    
-            `TABLES: *Bestellung, Artikel, Kunde*`    
+            `TABLES: _Bestellung, Artikel, Kunde_ `    
 - **V:**    Clients can rate articles they've already bought.    
-            `TABLES: *Bewertung, Artikel, Kunde*`       
+            `TABLES: _Bewertung, Artikel, Kunde_ `       
 - **VI:**   Prices can be updated easily per category (dicounts).    
-            `TABLES: *Unterkategorie (attribute: AktionID)*`        
+            `TABLES: _Unterkategorie (attribute: AktionID)_ `        
 - **VII:**  Each order has a state (ordered, in process, delivered).    
-            `TABLES: *Bestellung, Artikel, Kunde*`         
+            `TABLES: _Bestellung, Artikel, Kunde_ `         
 - **VIII:** The shop owner can query the sales sorted and ordered by:    
    * *MAX (Category, Subcategory, Article)*    
    * *MIN (Category, Subcategory, Article)*    
