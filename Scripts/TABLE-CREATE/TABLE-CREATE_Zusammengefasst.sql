@@ -1,23 +1,34 @@
-USE [INF2D_Alpha1_Shop]
+USE [INF2D_Alpha1_Shop];
 
 CREATE TABLE Kategorie( 
                         KategorieID bigint Identity (1,1) not null constraint PK_Kategorie Primary KEY,
                         Name nvarchar(50) not null
                       )
 
+CREATE TABLE Aktion (
+						AktionID bigint identity(1,1) not null,
+						Name nvarchar(50) not null,
+						Faktor float default 1,
+						Constraint AktionPK  Primary Key (AktionID)
+					)
+
+
+
 CREATE TABLE Unterkategorie(
                             UnterkategorieID bigint Identity (1,1) not null constraint PK_Unterkategorie Primary KEY, 
-	                        KategorieID bigint not null,
+	                        KategorieID bigint default null,
                             Name nvarchar(50) not null,
-                            Status nvarchar(50) not NUll,
+							AktionID bigint default 1,
                             Constraint KategorieFK Foreign Key (KategorieID)
                                 References Kategorie (KategorieID)
-                                    on Update cascade ON DELETE SET NULL
+                                    on Update cascade ON DELETE SET NULL,
+							Constraint AktionFK Foreign Key(AktionID) References Aktion(AktionID) ON Delete set default On Update Cascade
                             )
+
 
 CREATE TABLE Artikel(	
                         ArtikelID BIGINT IDENTITY(1,12) NOT NULL CONSTRAINT pk_artikel PRIMARY KEY,
-                        UnterkategorieID BIGINT NOT NULL,
+                        UnterkategorieID BIGINT Default NULL,
                         Name NVARCHAR(50) NOT NULL,
                         Beschreibung NVARCHAR(100) NOT NULL,
                         CONSTRAINT fk_artikel FOREIGN KEY(UnterkategorieID)
@@ -28,8 +39,8 @@ CREATE TABLE Artikel(
 CREATE TABLE Preis( 
                     PreisID bigint identity(1,1) NOT NULL CONSTRAINT PK_Preis PRIMARY KEY,
                     ArtikelID bigint NOT NULL,
-                    Preis nvarchar(50) NOT NULL,
-	                CONSTRAINT fk_artikel FOREIGN KEY(ArtikelID)
+                    Preis float NOT NULL,
+	                CONSTRAINT fk_artikel_preis FOREIGN KEY(ArtikelID)
                         REFERENCES Artikel(ArtikelID) 
                             on update cascade on delete cascade,
                   )   
@@ -44,7 +55,7 @@ CREATE TABLE Galerie(
                         GalerieID BIGINT identity(1,1) NOT NULL CONSTRAINT pk_Galerie PRIMARY KEY,
                         ArtikelID BIGINT NOT NULL,
                         BildID BIGINT NOT NULL,
-                        CONSTRAINT fk_artikel FOREIGN KEY(ArtikelID)
+                        CONSTRAINT fk_artikel_galerie FOREIGN KEY(ArtikelID)
                             REFERENCES Artikel(ArtikelID)
                                 ON UPDATE CASCADE ON DELETE CASCADE,
                         CONSTRAINT fk_bild FOREIGN KEY(BildID)
@@ -66,7 +77,7 @@ CREATE TABLE Kunde(
                     Adresse nvarchar(50) NOT NULL, 
                     PLZ smallint NOT NULL, 
                     Ort nvarchar(50) NOT NULL, 
-                    KundengruppeID bigint NOT NULL, 
+                    KundengruppeID bigint default NULL, 
                     Mail nvarchar(50) NOT NULL, 
                     Tel nvarchar(20) NOT NULL,
                     CONSTRAINT FK_KundengruppeID_Kunde FOREIGN KEY(KundengruppeID) 
@@ -76,10 +87,10 @@ CREATE TABLE Kunde(
 
 CREATE TABLE Bewertung( 
                         BewertungID bigint identity(1,1) NOT NULL  CONSTRAINT PK_Bewertung Primary KEY,
-		                ArtikelID bigint not null,
-		                KundeID bigint not null,
+		                ArtikelID bigint default null,
+		                KundeID bigint default null,
 		                Kommentar nvarchar(50) Not NUll,
-		                constraint fk_artikel foreign Key (ArtikelID)
+		                constraint fk_artikel_bewertung foreign Key (ArtikelID)
                             References Artikel (ArtikelID)
                                 on update cascade on delete set null,
 		                constraint fk_kunde foreign Key(KundeID) 
@@ -89,12 +100,15 @@ CREATE TABLE Bewertung(
 
 CREATE TABLE Bestellung(
                         BestellungID bigint IDENTITY(1,1) NOT NULL CONSTRAINT PK_BestellungID PRIMARY KEY,
-	                    ArtikelID bigint  NOT NULL,
-	                    KundeID bigint NOT NULL,
+	                    ArtikelID bigint  default NULL,
+	                    KundeID bigint default NULL,
+						Status nvarchar(50) default Null,
+						Preis float default null,
 	                    CONSTRAINT FK_KundeID FOREIGN KEY(KundeID)
 	                        REFERENCES Kunde(KundeID) 
                                 on delete set null on update cascade,
 	                    CONSTRAINT FK_ArtikelID FOREIGN KEY(ArtikelID)
 	                        REFERENCES Artikel(ArtikelID)
+								on update cascade
 						);
                   
