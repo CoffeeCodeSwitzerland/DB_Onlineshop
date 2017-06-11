@@ -6,7 +6,7 @@ Versionen der Datenbank vermieden werden kann.
 
 -Tobias
 In Bearbeitung ->
-Abgeschlossen  ->
+Abgeschlossen  ->   X    //From Frithjof: Consider that I add the tables Unterkategorie and Kateogrie and change parenthesis
 
 -Philippe
 In Bearbeitung ->
@@ -18,8 +18,8 @@ Abgeschlossen  ->
 
 -Timo
 In Bearbeitung ->
-Abgeschlossen  ->
+Abgeschlossen  ->       //From Frithjof: Consider that I add the table Preis and change parenthesis
 
 -Frithjof
-In Bearbeitung -> X
-Abgeschlossen  ->
+In Bearbeitung -> 
+Abgeschlossen  ->       //Added until the table Artikel
