@@ -15,15 +15,15 @@ for a client. It's like a contest, because two groups have the same database pro
 - [Philippe Krüttli](https://github.com/kruettlip) (**VIII**) philippe.kruettli@gmx.ch
 
 ## SELECT | INSERT | UPDATE
-- **IV:**   Previous purchases should be viewable (needed for warranty).    
+- [ ] **IV:**   Previous purchases should be viewable (needed for warranty).    
             `TABLES: Bestellung, Artikel, Kunde`    
-- **V:**    Clients can rate articles they've already bought.    
+- [ ] **V:**    Clients can rate articles they've already bought.    
             `TABLES: Bewertung, Artikel, Kunde`       
-- **VI:**   Prices can be updated easily per category (dicounts).    
+- [ ] **VI:**   Prices can be updated easily per category (dicounts).    
             `TABLES: Unterkategorie (attribute: AktionID)`        
-- **VII:**  Each order has a state (ordered, in process, delivered).    
+- [ ] **VII:**  Each order has a state (ordered, in process, delivered).    
             `TABLES: Bestellung, Artikel, Kunde`         
-- **VIII:** The shop owner can query the sales sorted and ordered by:    
+- [x] **VIII:** The shop owner can query the sales sorted and ordered by:    
    * *MAX (Category, Subcategory, Article)*    
    * *MIN (Category, Subcategory, Article)*    
    * *AVG (Category, Subcategory, Article)*    
