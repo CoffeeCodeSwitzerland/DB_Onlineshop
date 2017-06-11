@@ -3,20 +3,20 @@
 /*-----------------------------------------------------------------------------------------------------------------*/
 
 /* Kategorie mit grösstem Umsatz ausgeben */
-SELECT k.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT k.Name AS 'Kategorie mit grösstem Umsatz', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 	JOIN Kategorie AS k ON k.KategorieID = u.KategorieID
 	GROUP BY u.KategorieID;
 
 /* Unterkategorie mit grösstem Umsatz ausgeben */
-SELECT u.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT u.Name AS 'Unterkategorie mit grösstem Umsatz', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 	GROUP BY a.UnterkategorieID;
 
 /* Artikel mit grösstem Umsatz ausgeben */
-SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT a.Name AS 'Artikel mit grösstem Umsatz', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	GROUP BY b.ArtikelID;
 	
@@ -26,20 +26,20 @@ SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
 
 	
 /* Kategorie mit kleinstem Umsatz ausgeben */
-SELECT k.Name, MIN(SUM(b.Preis)) FROM Bestellung AS b
+SELECT k.Name AS 'Kategorie mit kleinstem Umsatz', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 	JOIN Kategorie AS k ON k.KategorieID = u.KategorieID
 		GROUP BY u.KategorieID;
 
 /* Unterkategorie mit kleinstem Umsatz ausgeben */
-SELECT u.Name, MIN(SUM(b.Preis)) FROM Bestellung AS b
+SELECT u.Name AS 'Unterkategorie mit kleinstem Umsatz', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 		GROUP BY a.UnterkategorieID;
 
 /* Artikel mit kleinstem Umsatz ausgeben */
-SELECT a.Name, MIN(SUM(b.Preis)) FROM Bestellung AS b
+SELECT a.Name AS 'Artikel mit kleinstem Umsatz', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 		GROUP BY b.ArtikelID;
 	
@@ -49,7 +49,7 @@ SELECT a.Name, MIN(SUM(b.Preis)) FROM Bestellung AS b
 
 	
 /* Durchschnittsumsatz pro Kategorie */
-SELECT k.Name, AVG(b.Preis) FROM Bestellung AS b
+SELECT k.Name AS 'Kategorie', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS z ON u.UnterkategorieID = a.UnterkategorieID
 	JOIN Kategorie AS k ON k.KategorieID = u.KategorieID
@@ -57,14 +57,14 @@ SELECT k.Name, AVG(b.Preis) FROM Bestellung AS b
 			ORDER BY AVG(b.Preis) DESC;
 		
 /* Durchschnittsumsatz pro Unterkategorie */
-SELECT u.Name, AVG(b.Preis) FROM Bestellung AS b
+SELECT u.Name AS 'Unterkategorie', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS z ON u.UnterkategorieID = a.UnterkategorieID
 		GROUP BY a.UnterkategorieID
 			ORDER BY AVG(b.Preis) DESC;
 
 /* Durchschnittsumsatz pro Artikel */
-SELECT a.Name, AVG(b.Preis) FROM Bestellung AS b
+SELECT a.Name AS 'Artikel', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 		GROUP BY b.ArtikelID
 			ORDER BY AVG(b.Preis) DESC;
@@ -75,7 +75,7 @@ SELECT a.Name, AVG(b.Preis) FROM Bestellung AS b
 	
 	
 /* Gesamtumsatz pro Unterkategorie einer Kategorie */
-SELECT u.Name, SUM(b.Preis) FROM Bestellung AS b
+SELECT u.Name AS 'Unterkategorie', SUM(b.Preis) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 	JOIN Kategorie AS k ON k.KategorieID = u.KategorieID
@@ -84,7 +84,7 @@ SELECT u.Name, SUM(b.Preis) FROM Bestellung AS b
 				WHERE k.Name = "";
 
 /* Gesamtumsatz pro Artikel einer Kategorie */		
-SELECT u.Name, SUM(b.Preis) FROM Bestellung AS b
+SELECT a.Name AS 'Artikel', SUM(b.Preis) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 	JOIN Kategorie AS k ON k.KategorieID = u.KategorieID
@@ -98,7 +98,7 @@ SELECT u.Name, SUM(b.Preis) FROM Bestellung AS b
 	
 	
 /* Beliebteste Kategorie einer Kundengruppe */
-SELECT k.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT k.Name AS 'Kategorie', MAX(SUM(b.Preis)) AS 'Umsatz in Kundengruppe' FROM Bestellung AS b
 	JOIN Kunden AS ku ON ku.KundeID = b.KundeID
 	JOIN Kundengruppe AS kg ON kg.KundengruppeID = ku.KundengruppeID
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
@@ -108,7 +108,7 @@ SELECT k.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
 			WHERE kg.Name = "";
 
 /* Beliebteste Unterkategorie einer Kundengruppe */
-SELECT u.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT u.Name AS 'Unterkategorie', MAX(SUM(b.Preis)) AS 'Umsatz in Kundengruppe' FROM Bestellung AS b
 	JOIN Kunden AS ku ON ku.KundeID = b.KundeID
 	JOIN Kundengruppe AS kg ON kg.KundengruppeID = ku.KundengruppeID
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
@@ -117,7 +117,7 @@ SELECT u.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
 			WHERE kg.Name = "";
 
 /* Beliebtester Artikel einer Kundengruppe */
-SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT a.Name AS 'Artikel', MAX(SUM(b.Preis)) AS 'Umsatz in Kundengruppe' FROM Bestellung AS b
 	JOIN Kunden AS ku ON ku.KundeID = b.KundeID
 	JOIN Kundengruppe AS kg ON kg.KundengruppeID = ku.KundengruppeID
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
@@ -130,12 +130,12 @@ SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
 	
 	
 /* Bester Kunde */
-SELECT ku.Vorname, ku.Nachname, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT ku.Vorname AS 'Vorname', ku.Nachname AS 'Nachname', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Kunde AS ku ON ku.KundeID = b.KundeID
 		GROUP BY b.KundeID;
 
 /* Beste Kundengruppe */
-SELECT kg.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT kg.Name AS 'Kundengruppe', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Kunde AS ku ON ku.KundeID = b.KundeID
 	JOIN Kundengruppe AS kg ON kg.KundengruppeID = ku.KundengruppeID
 		GROUP BY ku.KundengruppeID;
@@ -144,7 +144,7 @@ SELECT kg.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
 
 	
 /* Beliebteste Kategorie eines Kunden */
-SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT ku.Vorname AS 'Vorname', ku.Nachname AS 'Nachname', k.Name AS 'Kategorie', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Kunden AS ku ON ku.KundeID = b.KundeID
 	JOIN Kundengruppe AS kg ON kg.KundengruppeID = ku.KundengruppeID
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
@@ -154,7 +154,7 @@ SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
 			WHERE ku.Vorname = "" AND ku.Nachname = "";		
 
 /* Beliebteste Unterkategorie eines Kunden */
-SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT ku.Vorname AS 'Vorname', ku.Nachname AS 'Nachname', u.Name AS 'Unterkategorie', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Kunden AS ku ON ku.KundeID = b.KundeID
 	JOIN Kundengruppe AS kg ON kg.KundengruppeID = ku.KundengruppeID
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
@@ -163,7 +163,7 @@ SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
 			WHERE ku.Vorname = "" AND ku.Nachname = "";			
 
 /* Beliebtester Artikel eines Kunden */	
-SELECT a.Name, MAX(SUM(b.Preis)) FROM Bestellung AS b
+SELECT ku.Vorname AS 'Vorname', ku.Nachname AS 'Nachname', a.Name AS 'Artikel', MAX(SUM(b.Preis)) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Kunden AS ku ON ku.KundeID = b.KundeID
 	JOIN Kundengruppe AS kg ON kg.KundengruppeID = ku.KundengruppeID
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
