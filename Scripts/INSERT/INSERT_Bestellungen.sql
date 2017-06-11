@@ -8,19 +8,19 @@ Benutzerangaben für den Bestellvorgang
 --------------------------------------------------------------
 */
 
-SET @vorname = '';       
+SET @vorname = 'Frithjof';       
 --Vorname des Kunden
 
-SET @nachname = '';		
+SET @nachname = 'Hoppe';		
 --Nachname des Kunden
 
-SET @erfasseDruchArtikelID = 0; 
+SET @erfasseDruchArtikelID = 1; 
 --Auswahl ob der Artikel anhan der ID oder des Namens gefunden werden soll
 
 SET @artikelbezeichnnung = '';	
 --Wenn @erfasseDruchArtikelID = 0 muss hier der Name des geünschten Artikels eingetragen werden
 
-SET @artikelid = 0;				
+SET @artikelid = 1;				
 --Wenn @erfasseDruchArtikelID = 1 muss hier die ID des gewünschten Artikels eingetragen werden 
 
 
@@ -81,7 +81,7 @@ IF EXISTS(SELECT KundeID FROM Kunde WHERE Vorname = @vorname AND Nachname = @nac
 				SET @zwischen = (1-((1-@rabatt) + (1-@aktion)))
 				SET @preis = @artikelpreis * @zwischen;
 
-				INSERT INTO Bestellung (ArtikelID,KundeID,Preis,Status) VALUES (@artikelid,@kundeid,@preis,'In Bearbeitung');
+				INSERT INTO Bestellung (ArtikelID,KundeID,Preis,StatusID) VALUES (@artikelid,@kundeid,@preis,(SELECT AuftragstatusID FROM Auftragstatus WHERE Bezeichung ='In Bearbeitung'));
 
 				SET @bestellnummer = (SELECT MAX(BestellungID) FROM Bestellung WHERE KundeID = @kundeid);
 

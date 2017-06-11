@@ -3,7 +3,7 @@ USE [INF2D_Alpha1_Shop];
 DECLARE @bestellnummer BIGINT, @status NVARCHAR(50),@erstellt BIT,@inBearbeitung BIT, @verschickt BIT,@geliefert BIT, @problem BIT, @akutellerStatusAnzeigen BIT,@wahr BIT;
 DECLARE @vorname NVARCHAR(50), @nachname NVARCHAR(50),@artikel NVARCHAR(50),@preis FLOAT;
 
-SET @bestellnummer = 0;
+SET @bestellnummer = 2;
 --Bestellung des Kunden
 
 SET @inBearbeitung = 0;
