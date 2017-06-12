@@ -21,7 +21,7 @@ for a client. It's like a contest, because two groups have the same database pro
             `TABLES: Bewertung, Artikel, Kunde`       
 - [ ] **VI:**   Prices can be updated easily per category (dicounts).    
             `TABLES: Unterkategorie (attribute: AktionID)`        
-- [ ] **VII:**  Each order has a state (ordered, in process, delivered).    
+- [x] **VII:**  Each order has a state (ordered, in process, delivered).    
             `TABLES: Bestellung, Artikel, Kunde`         
 - [x] **VIII:** The shop owner can query the sales sorted and ordered by:    
    * *MAX (Category, Subcategory, Article)*    
