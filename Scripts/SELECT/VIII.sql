@@ -58,7 +58,7 @@ SELECT TOP 1 a.Name AS 'Artikel mit kleinstem Umsatz', SUM(b.Preis) AS 'Umsatz' 
 
 	
 /* Durchschnittsumsatz pro Kategorie */
-SELECT TOP 1 k.Name AS 'Kategorie', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
+SELECT k.Name AS 'Kategorie', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 	JOIN Kategorie AS k ON k.KategorieID = u.KategorieID
@@ -66,14 +66,14 @@ SELECT TOP 1 k.Name AS 'Kategorie', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM B
 			ORDER BY AVG(b.Preis) DESC;
 		
 /* Durchschnittsumsatz pro Unterkategorie */
-SELECT TOP 1 u.Name AS 'Unterkategorie', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
+SELECT u.Name AS 'Unterkategorie', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 		GROUP BY a.UnterkategorieID, u.Name
 			ORDER BY AVG(b.Preis) DESC;
 
 /* Durchschnittsumsatz pro Artikel */
-SELECT TOP 1 a.Name AS 'Artikel', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
+SELECT a.Name AS 'Artikel', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 		GROUP BY b.ArtikelID, a.Name
 			ORDER BY AVG(b.Preis) DESC;
@@ -84,7 +84,7 @@ SELECT TOP 1 a.Name AS 'Artikel', AVG(b.Preis) AS 'Durchschnittsumsatz' FROM Bes
 	
 	
 /* Gesamtumsatz pro Unterkategorie einer Kategorie */
-SELECT TOP 1 u.Name AS 'Unterkategorie', SUM(b.Preis) AS 'Umsatz' FROM Bestellung AS b
+SELECT u.Name AS 'Unterkategorie', SUM(b.Preis) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 	JOIN Kategorie AS k ON k.KategorieID = u.KategorieID
@@ -93,7 +93,7 @@ SELECT TOP 1 u.Name AS 'Unterkategorie', SUM(b.Preis) AS 'Umsatz' FROM Bestellun
 				ORDER BY SUM(b.Preis) DESC;
 
 /* Gesamtumsatz pro Artikel einer Kategorie */		
-SELECT TOP 1 a.Name AS 'Artikel', SUM(b.Preis) AS 'Umsatz' FROM Bestellung AS b
+SELECT a.Name AS 'Artikel', SUM(b.Preis) AS 'Umsatz' FROM Bestellung AS b
 	JOIN Artikel AS a ON a.ArtikelID = b.ArtikelID
 	JOIN Unterkategorie AS u ON u.UnterkategorieID = a.UnterkategorieID
 	JOIN Kategorie AS k ON k.KategorieID = u.KategorieID
